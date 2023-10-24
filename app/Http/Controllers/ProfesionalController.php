@@ -17,6 +17,7 @@ class ProfesionalController extends Controller
     public function index()
     {   
         $profesionales = Profesional::all();
+        
         return view('profesionales.index_profesionales', compact('profesionales'));
     }
 
@@ -35,15 +36,6 @@ class ProfesionalController extends Controller
      */
     public function store(Request $request)
     {   
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'apellido' => 'required|string',
-        //     'dni' => 'required|numeric|',
-        //     'telefono' => 'required|integer|max:10'
-        // ]);
-        
-       // dd($request->all()); // Agrega esta línea para depurar y verificar los datos
-
 
         // Utiliza $request->input('nombre') en lugar de $request->input['nombre']
         $name = $request->input('nombre');
@@ -118,6 +110,9 @@ class ProfesionalController extends Controller
     public function destroy(string $id)
     {
         $profesionales = Profesional::find($id);
-        $profesionales->delete();   
+        $profesionales->delete();
+
+        return redirect()->route('index_profesionales');
+
     }
 }

@@ -12,6 +12,7 @@ class Clientes extends Model
     use SoftDeltes;
 
     protected $guarded = [ "id" ];
+    protected $table = 'clientes';
 
     protected $fillable = [
         'name',

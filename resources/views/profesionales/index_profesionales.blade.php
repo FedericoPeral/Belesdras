@@ -163,9 +163,14 @@
                             <td> {{$profesional->telefono}}</td>
                             <td>
                                 <a href="{{ route('profesionales.edit', ['id' => $profesional->id]) }}">
-                                    <bu<tton class="neon-button editar-btn" style="border: transparent;">Editar</button>
+                                <button class="neon-button editar-btn" style="border: transparent;">Editar</button>
                                 </a>
-                                <button class="neon-button eliminar-btn" style="border: transparent;">Eliminar</button>
+                                <form method="POST" action="{{ route('profesionales.delete', ['id' => $profesional->id]) }}" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="neon-button eliminar-btn" style="border: transparent;">Eliminar</button>
+                                </form>
+                                
                             </td>
                         </tr>
                         @endforeach
@@ -272,6 +277,19 @@
             document.getElementById("popup").style.display = "none";
         });
     </script>
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("eliminar-link").addEventListener("click", function(event) {
+                event.preventDefault(); // Prevenir la acción predeterminada del enlace
 
+                var confirmacion = confirm("¿Estás seguro de que deseas eliminar el registro?");
+
+                if (confirmacion) {
+                    // Redirigir al enlace de eliminación
+                    window.location.href = this.getAttribute("href");
+                }
+            });
+        });
+    </script>
+</body>
 </html>

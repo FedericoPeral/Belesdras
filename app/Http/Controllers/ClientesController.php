@@ -11,7 +11,8 @@ class ClientesController extends Controller
      * retorna la vista index 
      */
     public function index()
-    {
+    {   
+        
         return view('index_clientes');
     }
 
