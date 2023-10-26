@@ -62,7 +62,13 @@ class ClientesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $clientes = Clientes::find($id);
+        if ($clientes) {
+            return view('clientes.edit_clientes', compact('clientes'));
+        } else {
+            // Maneja el caso en el que el profesional no se encuentra
+            return redirect()->route('indexclientes')->with('error', 'Cliente no encontrado');
+        }
     }
 
     /**
@@ -70,7 +76,23 @@ class ClientesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $clientes = Clientes::find($id);
+
+        if (!$clientes) {
+            // Maneja el caso en el que el profesional no se encuentra
+            return redirect()->route('indexclientes.index')->with('error', 'Cliente no encontrado');
+        }
+        
+
+
+        $clientes->name = $request->input('nombre');
+        $clientes->apellido = $request->input('apellido');
+        $clientes->dni = $request->input('dni');
+        $clientes->telefono = $request->input('telefono');
+
+        $clientes->save();
+        // Redirige de vuelta a la vista de listado de profesionales
+        return redirect()->route('indexclientes');
     }
 
     /**
@@ -78,6 +100,9 @@ class ClientesController extends Controller
      */
     public function destroy(string $id)
     {
-        $clientes->delete($id);
+        $clientes = Clientes::find($id);
+        $clientes->delete();
+
+        return redirect()->route('indexclientes');
     }
 }
