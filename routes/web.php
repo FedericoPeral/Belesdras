@@ -33,6 +33,11 @@ Route::delete('profesionales/{id}', [ProfesionalController::class, 'destroy'])->
 
 //Rutas clientes
 
+Route::get('clientes/indexclientes', [App\Http\Controllers\ClientesController::class, 'index'])->name('indexclientes');
+Route::post('clientes/indexclientes', [App\Http\Controllers\ClientesController::class, 'store'])->name('indexclientes.store');
+Route::get('clientes/{id}/edit', [ClientesController::class, 'edit'])->name('clientes.edit');
+Route::put('clientes/{id}', [ClientesController::class, 'update'])->name('clientes.update');
+Route::delete('clientes/{id}', [ClientesController::class, 'destroy'])->name('clientes.delete');
 
 
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');

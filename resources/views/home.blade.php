@@ -34,8 +34,8 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="#">
-                        <i class='bx bx-user' ></i>
+                    <a href="{{route('indexclientes')}}">
+                        <i class='bx bxs-user-circle' ></i>
                         <span class="text nav-text">Cliente</span>
                     </a>
                 </li>
