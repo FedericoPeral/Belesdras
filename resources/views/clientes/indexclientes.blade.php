@@ -158,8 +158,15 @@
                             <td> {{$cliente->dni}} </td>
                             <td> {{$cliente->telefono}} </td>
                             <td>
-                                <button class="neon-button eliminar-btn" style="border: transparent;">Eliminar</button>
+                                <a href="{{ route('clientes.edit', ['id' => $cliente->id]) }}">
                                 <button class="neon-button editar-btn" style="border: transparent;">Editar</button>
+                                </a>
+                                <form method="POST" action="{{ route('clientes.delete', ['id' => $cliente->id]) }}" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="neon-button eliminar-btn" style="border: transparent;">Eliminar</button>
+                                </form>
+                                
                             </td>
                         </tr>
                         @endforeach
