@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Profesional;
 
+use App\Models\Telefono;    
+
 use Illuminate\Http\Request;
 
 use RealRashid\SweetAlert\Facades\Alert;
@@ -17,8 +19,9 @@ class ProfesionalController extends Controller
     public function index()
     {   
         $profesionales = Profesional::all();
-        
-        return view('profesionales.index_profesionales', compact('profesionales'));
+        $telefonos = Telefono::all();
+
+        return view('profesionales.index_profesionales', compact('profesionales','telefonos'));
     }
 
     /**
@@ -27,8 +30,9 @@ class ProfesionalController extends Controller
     public function create()
     {
         $profesionales = Profesional::all();
+        $telefonos = Telefono::all();
 
-        return view('profesionales.index_profesionales');
+        return view('profesionales.index_profesionales',compact('telefonos','profesionales'));
     }
 
     /**

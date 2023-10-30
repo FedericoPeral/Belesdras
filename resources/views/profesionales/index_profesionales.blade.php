@@ -6,9 +6,9 @@
     <title>Profesionales</title>
     <link rel="stylesheet" href="{{ asset('css/profesionales.css') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.css">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <style>
         /* Estilos para los botones del modal */
@@ -58,45 +58,57 @@
         <div class="menu-bar">
             <div class="menu">
                 <div class="menu-links">
-                    <ul>
-                        <!-- <li class="search-box">
+                <ul>
+                        <li class="search-box">
                             <i class='bx bx-search-alt-2'></i>
                             <input id="searchInput" type="text" placeholder="Buscar....">
-                        </li> -->
+                        </li>
                         <li class="nav-link">
                             <a href="{{route('home')}}">
-                            <ion-icon name="home"></ion-icon>
-                            <span class="text nav-text">Inicio</span>
+                                <i class='bx bx-home'></i>
+                                <span class="text nav-text">Home</span>
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
-                                <i class='bx bx-user'></i>
-                                <span class="text nav-text">Cliente</span>
+                            <a href="{{route('index_profesionales')}}">
+                                <i class='bx bx-user-circle'></i>
+                                <span class="text nav-text">Profesionales</span>
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{route('indexclientes')}}">
+                                <i class='bx bx-user-circle'></i>
+                                <span class="text nav-text">Clientes</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="{{route('indexturnos')}}">
                                 <i class='bx bx-notepad'></i>
                                 <span class="text nav-text">Turnos</span>
                             </a>
                         </li>
-                        <li class="nav-link">
-                            <a href="#">
-                                <i class='bx bx-calculator'></i>
-                                <span class="text nav-text">Facturación</span>
-                            </a>
-                        </li>
-                        <li class="nav-link">
+                        <li class= "nav-link">
                             <a href="#">
                                 <i class='bx bxs-bell-ring'></i>
                                 <span class="text nav-text">Notificaciones</span>
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{route('indextelefonos')}}">
                                 <i class='bx bx-phone'></i>
                                 <span class="text nav-text">Teléfonos</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-calculator'></i>
+                                <span class="text nav-text">Facturacion</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-notepad'></i>
+                                <span class="text nav-text">Reportes</span>
                             </a>
                         </li>
                     </ul>
@@ -105,7 +117,7 @@
             <div class="bottom-content">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="{{route('logout')}}">
                             <i class='bx bx-log-out'></i>
                             <span class="text nav-text">Salir</span>
                         </a>
@@ -258,8 +270,12 @@
 
     <div class="input-box">
         <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
-        <input type="tel" name="telefono" required>
-        <label>Teléfono</label>
+        <select name="telefono" required >
+            <option value="">Selecciona un teléfono</option>
+            @foreach($telefonos as $telefono)
+                <option value="{{ $telefono->telefono }}">{{ $telefono->telefono }}</option>
+            @endforeach
+        </select>
     </div>
     <button type="submit">Confirmar</button>
 </form>

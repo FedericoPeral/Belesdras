@@ -52,7 +52,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: url('2211.i211.024.S.m012.c13.gua sha massage tools realistic composition 1.jpg') center/cover no-repeat;
+    background: url('../img/2211.i211.024.S.m012.c13.gua sha massage tools realistic composition 1.jpg') center/cover no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -188,7 +188,7 @@ button [name="Confirmar"]{
 
 body {
     min-height: 100vh;
-    background-image: url('html_table.jpg'); 
+    background-image: url('../img/html_table.jpg'); 
     background-position: center;
     background-size: cover;
     display: flex;
@@ -905,6 +905,24 @@ main.table {
     height: 1.2rem;
 }
 
+/* Estilos para los select en el formulario */
+.login-box select {
+    background-color: #f5f5f5; /* Color de fondo del select */
+    border: 1px solid #ccc; /* Borde del select */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px; /* Espaciado interno */
+    width: 100%; /* Ancho completo del contenedor */
+    font-size: 16px; /* Tamaño de fuente */
+    color: #333; /* Color del texto */
+}
+
+/* Estilos para los select cuando están enfocados */
+.login-box select:focus {
+    outline: none; /* Eliminar el borde de enfoque por defecto */
+    border-color: #007bff; /* Cambiar el color del borde cuando el select está enfocado */
+}
+
+
 .table__header .input-group input {
     width: 100%;
     padding: 0 .5rem 0 .3rem;
@@ -1085,7 +1103,7 @@ thead th.active,tbody td.active {
     display: inline-block;
     width: 2rem;
     height: 2rem;
-    background: #fff6 url(export.png) center / 80% no-repeat;
+    background: #fff6 url(../img/export.png) center / 80% no-repeat;
     border-radius: 50%;
     transition: .2s ease-in-out;
 }

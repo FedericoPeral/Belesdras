@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clientes;
+use App\Models\Telefono;    
+
 
 class ClientesController extends Controller
 {
@@ -13,8 +15,10 @@ class ClientesController extends Controller
      */
     public function index()
     {   
-       $clientes=Clientes::all(); 
-        return view('clientes.indexclientes' , compact ('clientes'));
+        $telefonos = Telefono::all();
+ 
+        $clientes=Clientes::all(); 
+        return view('clientes.indexclientes' , compact ('clientes','telefonos'));
     }
 
     /**
@@ -22,9 +26,10 @@ class ClientesController extends Controller
      * retorna la vista del formulario de creacion
      */
     public function create()
-    {
+    {   
+        $telefonos = Telefono::all();
         $clientes=Clientes::all(); 
-        return view('clientes.indexclientes');
+        return view('clientes.indexclientes','telefonos','clientes');
     }
 
     /**
@@ -35,7 +40,7 @@ class ClientesController extends Controller
         $name=$request->input('nombre');
         $apellido=$request->input('apellido');
         $dni=$request->input('dni');
-        $telefono=$request->input('telefonos');
+        $telefono=$request->input('telefono');
 
         $clientes=new Clientes();
 

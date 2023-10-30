@@ -6,6 +6,8 @@
     <title>clientes</title>
     <link rel="stylesheet" href="{{ asset('css/clientes.css') }}">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.css">
     <style>
         /* Estilos para los botones del modal */
@@ -61,19 +63,19 @@
                             <input id="searchInput" type="text" placeholder="Buscar....">
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{route('index_profesionales')}}">
                                 <i class='bx bxs-user-circle'></i>
                                 <span class="text nav-text">Profesional</span>
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{route('indexclientes')}}">
                                 <i class='bx bx-user'></i>
                                 <span class="text nav-text">Cliente</span>
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{route('indexturnos')}}">
                                 <i class='bx bx-notepad'></i>
                                 <span class="text nav-text">Turnos</span>
                             </a>
@@ -91,9 +93,16 @@
                             </a>
                         </li>
                         <li class="nav-link">
-                            <a href="#">
+                            <a href="{{route('indextelefonos')}}">
                                 <i class='bx bx-phone'></i>
                                 <span class="text nav-text">Teléfonos</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-link">
+                            <a href="#">
+                                <i class='bx bx-phone'></i>
+                                <span class="text nav-text">reportes</span>
                             </a>
                         </li>
                     </ul>
@@ -102,7 +111,7 @@
             <div class="bottom-content">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="{{route('logout')}}">
                             <i class='bx bx-log-out'></i>
                             <span class="text nav-text">Salir</span>
                         </a>
@@ -127,7 +136,7 @@
                 <h1>Clientes</h1>
                 <div class="input-group">
                     <input type="search" placeholder="Buscar...">
-                    <img src="search.png" alt="">
+                    <img src="{{asset('img/search.png')}}" alt="">
                 </div>
                 <div class="export__file">
                     <label for="export-file" class="export__file-btn" title="Export File"></label>
@@ -153,7 +162,7 @@
                         @foreach($clientes as $cliente)
                         <tr>
                             <td> {{$cliente->id}} </td>
-                            <td> <img src="usuario1.png" alt="">{{$cliente->name}}</td>
+                            <td> <img src="{{asset('img/usuario3.png')}}" alt="">{{$cliente->name}}</td>
                             <td> {{$cliente->apellido}} </td>
                             <td> {{$cliente->dni}} </td>
                             <td> {{$cliente->telefono}} </td>
@@ -309,9 +318,13 @@
                
                 <div class="input-box">
                     <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
-                    <input type="number" name="telefonos" id="telefonos" required>
-                    <label>Teléfono</label>
-                </div>
+                    <select name="telefono" required multiple>
+                        <option value="">Selecciona un teléfono</option>
+                        @foreach($telefonos as $telefono)
+                            <option value="{{ $telefono->telefono }}">{{ $telefono->telefono}}</option>
+                        @endforeach
+                </select>
+                 </div>
                 <button type="submit" name="Confirmar">Confirmar</button>
             </form>
         </div>

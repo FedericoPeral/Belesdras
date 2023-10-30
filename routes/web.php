@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfesionalController;
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\TurnoController;
 
 
 
@@ -40,6 +41,21 @@ Route::post('clientes/indexclientes', [App\Http\Controllers\ClientesController::
 Route::get('clientes/{id}/edit', [ClientesController::class, 'edit'])->name('clientes.edit');
 Route::put('clientes/{id}', [ClientesController::class, 'update'])->name('clientes.update');
 Route::delete('clientes/{id}', [ClientesController::class, 'destroy'])->name('clientes.delete');
+
+//Rutas telefonos 
+
+Route::get('telefonos/indextelefonos', [App\Http\Controllers\TelefonoController::class, 'index'])->name('indextelefonos');
+Route::post('telefonos/indextelefonos', [App\Http\Controllers\TelefonoController::class, 'store'])->name('indextelefonos.store');
+Route::get('telefonos/{id}/edit', [TelefonoController::class, 'edit'])->name('telefonos.edit');
+Route::put('telefonos/{id}', [TelefonoController::class, 'update'])->name('telefonos.update');
+Route::delete('telefonos/{id}', [TelefonoController::class, 'destroy'])->name('telefonos.delete');
+
+
+Route::get('turnos/indexturnos', [App\Http\Controllers\TurnoController::class, 'index'])->name('indexturnos');
+Route::post('turnos/indexturnos', [App\Http\Controllers\TurnoController::class, 'store'])->name('indexturnos.store');
+Route::get('turnos/{id}/edit', [TurnoController::class, 'edit'])->name('turnos.edit');
+Route::put('turnos/{id}', [TurnoController::class, 'update'])->name('turnos.update');
+Route::delete('turnos/{id}', [TurnoController::class, 'destroy'])->name('turnos.delete');
 
 
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');

@@ -21,4 +21,15 @@ class Clientes extends Model
         'telefono'
     ];
 
+    public function telefonos(){
+        return $this->hasMany(Telefono::class);
+    }
+
+    public function turnos(){
+        return $this->hasMany(Turno::class);
+
+    }
+
+
+
 }

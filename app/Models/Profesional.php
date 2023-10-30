@@ -22,4 +22,20 @@ class Profesional extends Model
         'dni',
         'telefono'
     ];
+
+    public function telefonos(){
+        return $this->hasMany(Telefono::class);
+
+    }
+
+    public function turnos(){
+        $turnos = $this->hasOne(Turno::class);
+
+        if ($turnos) {
+            return $turnos->name;
+        } else {
+            return null;
+        }
+
+    }
 }
